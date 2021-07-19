@@ -81,6 +81,7 @@ public class Converter {
 			 		System.out.println("Please pick another option\n \n \n");
 			 }
 		}
+		scanner.close();
 	}
 	
 	
