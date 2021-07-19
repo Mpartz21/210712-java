@@ -1,5 +1,6 @@
 
 public class Test {
+	
 	public static void main(String[] args) {
 		A.staticCount = 2494;
 		System.out.println("class A staticCount: " + A.staticCount);
