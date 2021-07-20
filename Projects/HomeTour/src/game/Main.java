@@ -6,6 +6,11 @@ public class Main {
 	public static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		System.out.println("Please type in lower case only.");
+		RoomManager.init();
+		System.out.println("What is your name?");
+		
+		Player player = new Player(scanner);
 		
 	}
 

@@ -1,6 +1,8 @@
 package fixtures;
 
 public abstract class Fixture {
+	//Definition of fixture: 
+//	means any physical property that is permanently attached to real property
 	//Title for the fixture
 	private String name;
 	//a one sentence long description of a fixture

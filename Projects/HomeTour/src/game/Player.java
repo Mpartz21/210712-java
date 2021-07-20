@@ -1,13 +1,31 @@
 package game;
 
-import java.util.ArrayList;
 
-import fixtures.PickUpItems;
+import java.util.Scanner;
+
 import fixtures.Room;
 
 public class Player {
 	
-	ArrayList<PickUpItems> bag = new ArrayList<>();
+	private String name;
+	private Room currentRoom;
 
-	Room currentRoom;
+	
+	public Player(Scanner scanner){
+		setName(scanner.next());
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Room getCurrentRoom() {
+		return currentRoom;
+	}
+
+	public void setCurrentRoom(Room currentRoom) {
+		this.currentRoom = currentRoom;
+	}
 }
