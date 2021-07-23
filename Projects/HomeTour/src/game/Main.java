@@ -37,8 +37,8 @@ public class Main {
 		System.out.println("You are in " + player.getCurrentRoom().getName());
 		System.out.println("Commands: 'go' direction\n"
 						  +"'pick-up' item\n"
-						  +"'quit'\n");
-		System.out.println("Choose an exit:");
+						  +"'quit'\n"
+						  +"'inspect' object");
 		printExits(player);
 		printItemsInRoom(player.getCurrentRoom());
 		printPlayerInspect(player);
@@ -47,7 +47,7 @@ public class Main {
 	
 	private static void printExits(Player player) {
 		Room currentRoom = player.getCurrentRoom();
-		
+		System.out.println("Choose an exit:");
 		HashMap<String, Room> exits = currentRoom.getExits();
 		for(Entry<String, Room> exit : exits.entrySet()) {
 			System.out.println("go " + exit.getKey() + ": " + exit.getValue().getName());
@@ -70,11 +70,11 @@ public class Main {
 	
 	private static void printPlayerInspect(Player player) {
 		System.out.println("Things in this area to inspect");
-		System.out.println("inspect " + player.getCurrentRoom().getName());
+		System.out.println("inspect room");
 		if(player.getInventory().size()>0) {
 			int i = 0;
 			for(Item item: player.getInventory()) {
-				System.out.println("inspect " + player.getInventory().get(i).getName()g);
+				System.out.println("inspect " + player.getInventory().get(i).getName().toLowerCase());
 				i++;
 			}
 			System.out.println("\n");

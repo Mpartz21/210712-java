@@ -16,7 +16,7 @@ public class RoomManager {
 		Room foyer = new Room(
     			"The Foyer",
     			"a small foyer",
-    			"");
+    			"Long Description");
 		rooms.add(foyer);
 		setStartingRoom(foyer);
 		Room dinning= new Room(
@@ -50,13 +50,13 @@ public class RoomManager {
 				"Long Description");
 		rooms.add(bathRoom);
 		
-		Item book = new Item("The Book","A small book called Clean Code",
+		Item book = new Item("Book","A small book called Clean Code",
 				 "It is a book with an image of an interstellar body, "
 				+"it looks like a good read");
-		Item pianoKeys = new Item("The Bag of Piano Keys","A big bag",
+		Item pianoKeys = new Item("Bag","A big bag  of Piano Key",
 				 "A purple silk bag with a yellow " 
 				+"draw string filled with extra piano keys");	
-		Item tolietPaper = new Item("The Toliot Paper","Roll of Tolit Paper",
+		Item tolietPaper = new Item("Paper","Roll of Tolit Paper",
 				 "A 4-ply of tolit paper that looks brand new and even has a "
 				+"folded triangle at the start");
 		
@@ -83,7 +83,7 @@ public class RoomManager {
 		masterBedRoom.setExits("east", upStairsMain);
 		
 		bathRoom.setExits("south", upStairsMain);
-		bathRoom.addInventory("TP", tolietPaper);
+		bathRoom.addInventory("tp", tolietPaper);
 	}
 
 	public Room getStartingRoom() {

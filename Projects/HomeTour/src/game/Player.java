@@ -24,6 +24,15 @@ public class Player {
 		this.currentRoom = startingRoom;
 	}
 	
+	public Item getItemFromInventory(String name) {
+		for(Item item: Inventory) {
+			if(name.toLowerCase() == item.getName().toLowerCase()) {
+				return item;
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<Item> getInventory() {
 		return Inventory;
 	}

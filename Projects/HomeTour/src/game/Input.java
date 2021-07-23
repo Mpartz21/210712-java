@@ -2,7 +2,6 @@ package game;
 
 import java.util.Scanner;
 
-import fixtures.Fixture;
 import fixtures.Item;
 import fixtures.Room;
 import exceptions.ValueDoesNotExistException;
@@ -45,8 +44,8 @@ public class Input {
 				return true;
 				
 			case("inspect"):
-				inspectCommand();
-				
+				inspectCommand(inputCommands[1],player);
+				return true;
 			case("quit"):
 //				System.out.println("Quitting");
 				return false;
@@ -63,9 +62,24 @@ public class Input {
 		return true;
 	}
 	
-	private void inspectCommand() {
-		// TODO Auto-generated method stub
-		
+	private void inspectCommand(String input, Player player) {
+		switch(input) {
+		case("room"):
+			System.out.println(player.getCurrentRoom().getName() +"\n"
+				+player.getCurrentRoom().getShortDescription() +"\n"
+				+player.getCurrentRoom().getLongDescription());
+			break;
+		default:
+			if(player.getItemFromInventory(input)!= null) {
+					System.out.println(player.getItemFromInventory(input).getName()+"\n"
+					+player.getItemFromInventory(input).getShortDescription()+"\n"
+					+player.getItemFromInventory(input).getLongDescription());
+				}
+			if(!player.getInventory().contains(input.toLowerCase())) {
+				System.out.println("Could not inspect what your looking for");
+				break;
+			}
+		}
 	}
 
 	private void pick_upCommand(String input,Player player) {
