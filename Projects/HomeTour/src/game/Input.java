@@ -44,6 +44,9 @@ public class Input {
 				pick_upCommand(inputCommands[1], player);
 				return true;
 				
+			case("inspect"):
+				inspectCommand();
+				
 			case("quit"):
 //				System.out.println("Quitting");
 				return false;
@@ -60,6 +63,11 @@ public class Input {
 		return true;
 	}
 	
+	private void inspectCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void pick_upCommand(String input,Player player) {
 		try {
 			checiIfItemExisits(input,player);

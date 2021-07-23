@@ -50,13 +50,13 @@ public class RoomManager {
 				"Long Description");
 		rooms.add(bathRoom);
 		
-		Item book = new Item("book","A small book called Clean Code",
+		Item book = new Item("The Book","A small book called Clean Code",
 				 "It is a book with an image of an interstellar body, "
 				+"it looks like a good read");
-		Item pianoKeys = new Item("Bag of Piano Keys","A big bag",
+		Item pianoKeys = new Item("The Bag of Piano Keys","A big bag",
 				 "A purple silk bag with a yellow " 
 				+"draw string filled with extra piano keys");	
-		Item tolietPaper = new Item("Toliot Paper","Roll of Tolit Paper",
+		Item tolietPaper = new Item("The Toliot Paper","Roll of Tolit Paper",
 				 "A 4-ply of tolit paper that looks brand new and even has a "
 				+"folded triangle at the start");
 		

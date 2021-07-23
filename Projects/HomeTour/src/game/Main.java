@@ -22,7 +22,7 @@ public class Main {
 		Player player = new Player(rm.getStartingRoom());
 		
 		do {
-			printExits(player);
+			printToConsole(player);
 			String[] inputCommands = player.getPlayerInput().collectInput(scanner);
 			running = player.getPlayerInput().parse(inputCommands, player);
 		}while(running);
@@ -32,23 +32,30 @@ public class Main {
 	
 	
 	
-	private static void printExits(Player player) {
-		Room currentRoom = player.getCurrentRoom();
-		
-		HashMap<String, Room> exits = currentRoom.getExits();
+	private static void printToConsole(Player player) {
 		
 		System.out.println("You are in " + player.getCurrentRoom().getName());
 		System.out.println("Commands: 'go' direction\n"
 						  +"'pick-up' item\n"
-						  +"'quit'");
+						  +"'quit'\n");
 		System.out.println("Choose an exit:");
+		printExits(player);
+		printItemsInRoom(player.getCurrentRoom());
+		printPlayerInspect(player);
+		System.out.println("quit: quit\n");
+	}
+	
+	private static void printExits(Player player) {
+		Room currentRoom = player.getCurrentRoom();
 		
+		HashMap<String, Room> exits = currentRoom.getExits();
 		for(Entry<String, Room> exit : exits.entrySet()) {
 			System.out.println("go " + exit.getKey() + ": " + exit.getValue().getName());
 		}
-		printItemsInRoom(player.getCurrentRoom());
-		System.out.println("quit: quit\n");
+		System.out.println("\n");
+
 	}
+	
 	private static void printItemsInRoom(Room currentRoom) {
 		HashMap<String, Item> roomInventory = currentRoom.getInventory();
 		if(currentRoom.getInventory().size() > 0) {
@@ -56,6 +63,21 @@ public class Main {
 			for(Entry<String,Item> item :roomInventory.entrySet()) {
 				System.out.println("pick-up "+ item.getKey());
 			}
+			System.out.println("\n");
+		}
+		
+	}
+	
+	private static void printPlayerInspect(Player player) {
+		System.out.println("Things in this area to inspect");
+		System.out.println("inspect " + player.getCurrentRoom().getName());
+		if(player.getInventory().size()>0) {
+			int i = 0;
+			for(Item item: player.getInventory()) {
+				System.out.println("inspect " + player.getInventory().get(i).getName()g);
+				i++;
+			}
+			System.out.println("\n");
 		}
 	}
 
