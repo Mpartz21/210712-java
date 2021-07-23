@@ -14,10 +14,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		RoomManager rm = new RoomManager();
-		rm.init();
+		rm.createHouse();
 		System.out.println(rm.getStartingRoom().getName());
 		System.out.println();
-		Player player = new Player(scanner, rm.getStartingRoom());
+		Player player = new Player(rm.getStartingRoom());
 		
 		do {
 			printExits(player);
@@ -28,13 +28,12 @@ public class Main {
 		scanner.close();
 	}
 	
-	private void printCurrentRoom(Player player){
-		System.out.println(player.getName().toUpperCase()+" is inside the "+ player.getCurrentRoom().getName());
-	}
 	
-	public static void printExits(Player player) {
+	
+	private static void printExits(Player player) {
 		Room currentRoom = player.getCurrentRoom();
-		System.out.println(player.getCurrentRoom().getName());
+		System.out.println("You are in " + player.getCurrentRoom().getName());
+		
 		HashMap<String, Room> exits = currentRoom.getExits();
 		System.out.println("Commands: 'go' and a direction");
 		System.out.println("Choose an exit:");
