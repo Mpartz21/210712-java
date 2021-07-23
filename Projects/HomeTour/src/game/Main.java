@@ -5,6 +5,8 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 import javax.print.PrintException;
+
+import fixtures.Item;
 import fixtures.Room;
 
 public class Main {
@@ -32,17 +34,29 @@ public class Main {
 	
 	private static void printExits(Player player) {
 		Room currentRoom = player.getCurrentRoom();
-		System.out.println("You are in " + player.getCurrentRoom().getName());
 		
 		HashMap<String, Room> exits = currentRoom.getExits();
-		System.out.println("Commands: 'go' and a direction");
+		
+		System.out.println("You are in " + player.getCurrentRoom().getName());
+		System.out.println("Commands: 'go' direction\n"
+						  +"'pick-up' item\n"
+						  +"'quit'");
 		System.out.println("Choose an exit:");
-		int i= 0;
+		
 		for(Entry<String, Room> exit : exits.entrySet()) {
-			i++;
-			System.out.println("Go " + exit.getKey() + ": " + exit.getValue().getName());
+			System.out.println("go " + exit.getKey() + ": " + exit.getValue().getName());
 		}
+		printItemsInRoom(player.getCurrentRoom());
 		System.out.println("quit: quit\n");
+	}
+	private static void printItemsInRoom(Room currentRoom) {
+		HashMap<String, Item> roomInventory = currentRoom.getInventory();
+		if(currentRoom.getInventory().size() > 0) {
+			System.out.println("Items in the room to pick-up");
+			for(Entry<String,Item> item :roomInventory.entrySet()) {
+				System.out.println("pick-up "+ item.getKey());
+			}
+		}
 	}
 
 }

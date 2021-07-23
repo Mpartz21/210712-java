@@ -50,7 +50,7 @@ public class RoomManager {
 				"Long Description");
 		rooms.add(bathRoom);
 		
-		Item book = new Item("Clean Coding","A small book",
+		Item book = new Item("book","A small book called Clean Code",
 				 "It is a book with an image of an interstellar body, "
 				+"it looks like a good read");
 		Item pianoKeys = new Item("Bag of Piano Keys","A big bag",
@@ -68,11 +68,11 @@ public class RoomManager {
 		
 		piano.setExits("south", foyer);
 		piano.setExits("west", library);
-		piano.getInventory().add(pianoKeys);
+		piano.addInventory("bag", pianoKeys);
 		
 		library.setExits("east", foyer);
 		library.setExits("north-east", piano);
-		library.getInventory().add(book);
+		library.addInventory("book", book);
 		
 		dinning.setExits("north", foyer);
 		
@@ -83,7 +83,7 @@ public class RoomManager {
 		masterBedRoom.setExits("east", upStairsMain);
 		
 		bathRoom.setExits("south", upStairsMain);
-		bathRoom.getInventory().add(tolietPaper);
+		bathRoom.addInventory("TP", tolietPaper);
 	}
 
 	public Room getStartingRoom() {

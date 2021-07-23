@@ -2,19 +2,20 @@ package fixtures;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Room extends Fixture{
 	
 	private HashMap<String,Room> exits = new HashMap<>();
 	
-	private ArrayList<Item> inventory = new ArrayList<Item>();
+	private HashMap<String,Item> inventory = new HashMap<>();
 	
-	public ArrayList<Item> getInventory() {
+	public HashMap<String, Item> getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(ArrayList<Item> inventory) {
-		this.inventory = inventory;
+	public void addInventory(String key,Item item) {
+		inventory.put(key, item);
 	}
 
 	public Room(String name, String shortDescription, String longDescription) {

@@ -3,7 +3,9 @@ package game;
 import java.util.Scanner;
 
 import fixtures.Fixture;
-import exceptions.RoomDoesNotExistException;
+import fixtures.Item;
+import fixtures.Room;
+import exceptions.ValueDoesNotExistException;
 
 public class Input {
 	
@@ -22,10 +24,10 @@ public class Input {
 	}
 	
 	private void checkIfFixtureExisits(String input, Player player) throws 
-	RoomDoesNotExistException{
-		Fixture exists = player.getCurrentRoom().getExit(input);
+	ValueDoesNotExistException{
+		Room exists = player.getCurrentRoom().getExit(input);
 		if(exists == null) 
-			throw new RoomDoesNotExistException();
+			throw new ValueDoesNotExistException();
 	}
 	
 
@@ -36,9 +38,12 @@ public class Input {
 			case("go"):
 				goCommand(inputCommands[1], player);
 //			System.out.println("Going to " + player.getCurrentRoom().getExit(inputCommands[1]).getName());
-
 				return true;
 			
+			case("pick-up"):
+				pick_upCommand(inputCommands[1], player);
+				return true;
+				
 			case("quit"):
 //				System.out.println("Quitting");
 				return false;
@@ -55,11 +60,29 @@ public class Input {
 		return true;
 	}
 	
+	private void pick_upCommand(String input,Player player) {
+		try {
+			checiIfItemExisits(input,player);
+			player.getInventory().add(player.getCurrentRoom().getInventory().get(input));
+			player.getCurrentRoom().getInventory().remove(input);
+		}catch (ValueDoesNotExistException e) {
+			// TODO: handle exception
+			e.addSuppressed(e);
+		}
+		
+	}
+
+	private void checiIfItemExisits(String input, Player player) throws ValueDoesNotExistException {
+		Item exists = player.getCurrentRoom().getInventory().get(input);
+		if(exists == null) 
+			throw new ValueDoesNotExistException();
+	}
+
 	private void goCommand(String input, Player player) {
 		try {
 			checkIfFixtureExisits(input, player);
 			player.setCurrentRoom(player.getCurrentRoom().getExit(input));
-		} catch (RoomDoesNotExistException e) {
+		} catch (ValueDoesNotExistException e) {
 			// TODO Auto-generated catch block
 			e.addSuppressed(e);
 		}

@@ -24,6 +24,9 @@ public class Player {
 		this.currentRoom = startingRoom;
 	}
 	
+	public ArrayList<Item> getInventory() {
+		return Inventory;
+	}
 	public Room getCurrentRoom() {
 		return  this.currentRoom;
 	}
