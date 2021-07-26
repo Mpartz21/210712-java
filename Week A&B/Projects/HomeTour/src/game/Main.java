@@ -13,11 +13,11 @@ public class Main {
 	public static Scanner scanner = new Scanner(System.in);
 	public static boolean running = true;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
 		RoomManager rm = new RoomManager();
 		rm.createHouse();
-		System.out.println(rm.getStartingRoom().getName());
+//		System.out.println(rm.getStartingRoom().getName());
 		System.out.println();
 		Player player = new Player(rm.getStartingRoom());
 		
@@ -59,7 +59,7 @@ public class Main {
 	private static void printItemsInRoom(Room currentRoom) {
 		HashMap<String, Item> roomInventory = currentRoom.getInventory();
 		if(currentRoom.getInventory().size() > 0) {
-			System.out.println("Items in the room to pick-up");
+			System.out.println("Items in the room to pick-up:");
 			for(Entry<String,Item> item :roomInventory.entrySet()) {
 				System.out.println("pick-up "+ item.getKey());
 			}
@@ -69,7 +69,7 @@ public class Main {
 	}
 	
 	private static void printPlayerInspect(Player player) {
-		System.out.println("Things in this area to inspect");
+		System.out.println("Things in this area to inspect:g");
 		System.out.println("inspect room");
 		if(player.getInventory().size()>0) {
 			int i = 0;

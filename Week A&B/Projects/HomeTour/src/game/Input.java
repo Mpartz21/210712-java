@@ -11,7 +11,7 @@ public class Input {
 	public String[] collectInput(Scanner scanner) {
 		String[] inputCommands;
 		try {
-			String input = scanner.nextLine();
+			String input = scanner.nextLine().toLowerCase();
 			System.out.println(input);
 			inputCommands = input.split(" ");
 			return inputCommands;
